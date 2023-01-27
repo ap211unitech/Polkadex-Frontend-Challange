@@ -58,7 +58,7 @@ const Wrapper = styled.div`
   gap:30px;
   color: white;
   font-size:medium;
-  padding: 8px 4px 8px 30px;
+  padding: 6px 4px 6px 30px;
   border-radius: 14px;
   background: black;
 `
@@ -71,15 +71,17 @@ const Icon = styled.div`
   font-size:medium;
   padding:10px;
   border-radius:8px;
-  background-color: rgba(255, 255, 255, 0.3);  
-  backdrop-filter: blur(10px);
   cursor: pointer;
+  box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
+  background-color: rgb(228 228 228 / 30%); 
+  backdrop-filter: blur(8px); /* Chrome and Opera */
+  -webkit-backdrop-filter: blur(8px);  /* Safari 9+ */
 `
 
 const ModuleBorderWrap = styled.div`
     position: relative;
     background: linear-gradient(to right, #b12038 0%, #3f4e9c 55% );
-    padding: 1.5px 1.6px 1.5px 1.6px;
+    padding: 1.6px 1.6px 1.6px 1.6px;
     border-radius: 14px;
 `
 
