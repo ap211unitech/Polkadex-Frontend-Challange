@@ -8,6 +8,7 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
   min-height: 100vh;
+  font-family:'roboto',sans-serif!important;
 `
 const Main = styled.main`
   padding: 5rem 0;

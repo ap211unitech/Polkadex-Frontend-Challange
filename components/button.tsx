@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import { Fragment } from 'react'
 import { BiDownArrow, BiUpArrow } from 'react-icons/bi';
+import style from './style.module.css'
+import { motion } from 'framer-motion';
+import { FaEthereum } from 'react-icons/fa';
+import { BsFillSunFill } from 'react-icons/bs';
 
 export const Button = styled.button`
     position: relative;
@@ -21,39 +25,57 @@ export const Subtext = styled.div`
     font-size: small;
 `
 
-export const CardWrapper = styled.span`
+export const CardWrapper = styled.div`
     position: absolute;
-    top: -280%;
+    top: -380%;
+    left: ${prop => prop["left"]};
     font-size: small;
     background-color: white;
     color: black;
     border-radius: 14px;
-    padding:4px 16px 4px 16px;
-    height: 150px;
-    width: 48%;
+    padding:0px 10px 4px 14px;
+    height: 210px;
+    width: 40%;
     p{
         font-size: 14px;
+        font-weight: 500;
     }
+`
+
+const AmountCardWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+`
+
+const AmountIcon = styled.span`
+    background: lightgray;
+    color: white;
+    padding: 4px 6px;
+    margin-left: 6px;
+    border-radius: 4px;
+    font-size: smaller;
+    cursor: pointer;
 `
 
 const CardAmount = ({ cardText, amount, setAmount }) => {
     return (
         <Fragment>
-            <CardWrapper>
+            <CardWrapper left={"52%"}>
                 <p style={{ fontSize: '14px' }}>
                     {cardText}
                 </p>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
+                <AmountCardWrapper>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '30px' }}>
                         <div>
                             Max Amount
                         </div>
                         <div>
                             {amount?.max}
-                            <span style={{ background: 'lightgray', color: 'white', padding: '4px 6px', marginLeft: 6, borderRadius: 4, fontSize: 'smaller', cursor: 'pointer' }} onClick={() => setAmount('max')}>
+                            <AmountIcon onClick={() => setAmount('max')}>
                                 <BiUpArrow />
-                            </span>
+                            </AmountIcon>
                         </div>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '30px' }}>
@@ -62,23 +84,65 @@ const CardAmount = ({ cardText, amount, setAmount }) => {
                         </div>
                         <div>
                             {amount?.min}
-                            <span style={{ background: 'lightgray', color: 'white', padding: '4px 6px', marginLeft: 6, borderRadius: 4, fontSize: 'smaller', cursor: 'pointer' }} onClick={() => setAmount('min')}>
+                            <AmountIcon onClick={() => setAmount('min')}>
                                 <BiDownArrow />
-                            </span>
+                            </AmountIcon>
                         </div>
                     </div>
-                </div>
+                </AmountCardWrapper>
 
             </CardWrapper>
         </Fragment >
     )
 }
 
-export default function Buttons({ text, subText = undefined, setState, amounts, setAmounts }) {
+
+
+const CardToken = ({ cardText, items }) => {
     return (
         <Fragment>
-            {subText && text.includes('amount') && <CardAmount cardText={text} amount={amounts} setAmount={setAmounts} />}
-            <Button>
+            <CardWrapper left={"-10%"}>
+                <p style={{ fontSize: '14px' }}>
+                    {cardText}
+                </p>
+
+                {items?.map(item => (
+                    <label>
+                        <input type="radio" name="option" className={style.card_input_radio} />
+                        <div className={style.card} style={item.subText === 'ETH' ? { marginRight: 10 } : {}}>
+                            <span>
+                                {item.subText == 'ETH' ? <FaEthereum /> : <BsFillSunFill color='#00ADF2' />}
+                            </span>
+                            <span>
+                                {item.text}
+                            </span>
+                            <span>
+                                {item.subText}
+                            </span>
+                        </div>
+                    </label>
+                ))}
+
+            </CardWrapper>
+        </Fragment >
+    )
+}
+
+export default function Buttons({ cardToDisplay = 1, setCardToDisplay, text, subText = undefined, setState, amounts = null, setAmounts = null, tokenItems = null }) {
+
+
+    const handleClick = () => {
+        if (text.includes('token')) { setCardToDisplay(1); }
+        else if (text.includes('chain')) { setCardToDisplay(2); }
+        else if (text.includes('amount')) { setCardToDisplay(3); }
+    }
+
+    return (
+        <Fragment>
+            {cardToDisplay == 1 && subText && text.includes('token') && <CardToken cardText={text} items={tokenItems} />}
+            {/* {subText && text.includes('amount') && <CardAmount cardText={text} amount={amounts} setAmount={setAmounts} />} */}
+            {cardToDisplay == 3 && subText && text.includes('amount') && <CardAmount cardText={text} amount={amounts} setAmount={setAmounts} />}
+            <Button onClick={handleClick}>
                 {subText && <Subtext>
                     {subText}
                 </Subtext>}

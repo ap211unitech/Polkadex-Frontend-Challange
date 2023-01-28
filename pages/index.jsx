@@ -33,7 +33,7 @@ export default function Home() {
     items: []
   });
 
-  const [showDesc, setShowDesc] = useState(false);
+  const [cardToDisplay, setCardToDisplay] = useState(1);
 
   const [amounts, setAmounts] = useState({
     min: 1,
@@ -59,9 +59,9 @@ export default function Home() {
 
       {!menu ? <ModuleBorderWrap>
         <Wrapper onClick={() => setMenu(true)}>
-          <Button text={token.subTitle} />
-          <Button text={chain.subTitle} />
-          <Button text={amount.subTitle} />
+          <Button setCardToDisplay={setCardToDisplay} text={token.subTitle} />
+          <Button setCardToDisplay={setCardToDisplay} text={chain.subTitle} />
+          <Button setCardToDisplay={setCardToDisplay} text={amount.subTitle} />
           <Icon>
             <CiSearch size={'20'} />
           </Icon>
@@ -76,9 +76,9 @@ export default function Home() {
           <ModuleBorderWrap isMenuVisible={menu}>
             <Wrapper>
               <div>
-                <Button subText={token.subTitle} text={token.title} setState={setToken} />
-                <Button subText={chain.subTitle} text={chain.title} />
-                <Button subText={amount.subTitle} text={amount.title} amounts={amounts} setAmounts={handleAmountsChange} />
+                <Button cardToDisplay={cardToDisplay} setCardToDisplay={setCardToDisplay} subText={token.subTitle} text={token.title} setState={setToken} tokenItems={token.items} />
+                <Button cardToDisplay={cardToDisplay} setCardToDisplay={setCardToDisplay} subText={chain.subTitle} text={chain.title} />
+                <Button cardToDisplay={cardToDisplay} setCardToDisplay={setCardToDisplay} subText={amount.subTitle} text={amount.title} amounts={amounts} setAmounts={handleAmountsChange} />
               </div>
               <SecondaryIcon>
                 <CiSearch size={'24'} />
