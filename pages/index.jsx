@@ -55,6 +55,7 @@ export default function Home() {
     if (!refOne.current.contains(e.target)) {
       console.log('Clicked outside');
       setCardToDisplay(0);
+      setMenu(false);
     }
   }
 
@@ -67,21 +68,28 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {!menu ? <ModuleBorderWrap>
-        <Wrapper onClick={() => setMenu(true)} ref={refOne}>
-          <Button setCardToDisplay={setCardToDisplay} text={token.subTitle} />
-          <Button setCardToDisplay={setCardToDisplay} text={chain.subTitle} />
-          <Button setCardToDisplay={setCardToDisplay} text={amount.subTitle} />
-          <Icon>
-            <CiSearch size={'20'} />
-          </Icon>
-        </Wrapper>
-      </ModuleBorderWrap>
+      {!menu ?
+        <motion.div
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 0.9 }}
+          transition={{ duration: 0.4 }}
+        >
+          <ModuleBorderWrap>
+            <Wrapper onClick={() => setMenu(true)} ref={refOne}>
+              <Button setCardToDisplay={setCardToDisplay} text={token.subTitle} />
+              <Button setCardToDisplay={setCardToDisplay} text={chain.subTitle} />
+              <Button setCardToDisplay={setCardToDisplay} text={amount.subTitle} />
+              <Icon>
+                <CiSearch size={'20'} />
+              </Icon>
+            </Wrapper>
+          </ModuleBorderWrap>
+        </motion.div>
         :
         <motion.div
-          initial={{ scaleX: 0.5, scaleY: 0.5 }}
-          animate={{ scaleX: 1, scaleY: 1 }}
-          transition={{ duration: 0.3 }}
+          initial={{ scale: 0.9 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.8 }}
         >
           <ModuleBorderWrap isMenuVisible={menu}>
             <Wrapper ref={refOne}>
