@@ -12,10 +12,10 @@ UI component made as given in [Figma](https://www.figma.com/proto/6toqGDBQmJuw8N
 ## Run Locally
 1. Clone the repo in local machine
 2. Run the command `npm install` in root of the project.
-3. Run command 'npm run dev' to watch it live on [http://localhost:3000/](http://localhost:3000/) 
+3. Run command `npm run dev` to watch it live on [http://localhost:3000/](http://localhost:3000/) 
 
 ## Watch Live
-Project is deployed at []()
+Project is deployed at [https://polkadex-frontend-challange.vercel.app/](https://polkadex-frontend-challange.vercel.app/)
 
 ## Developer
 [Arjun Porwal](https://github.com/ap211unitech/)
