@@ -103,6 +103,10 @@ export default function Home() {
         </motion.div>
       }
 
+      <a href="https://github.com/ap211unitech/Polkadex-Frontend-Challange" target="_blank" style={{ color: 'white', position: 'relative', bottom: -200, borderBottom: '2px solid white' }}>
+        Link to Github
+      </a>
+
     </Container>
   )
 }
