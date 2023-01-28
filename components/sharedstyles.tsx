@@ -19,39 +19,6 @@ const Main = styled.main`
   align-items: center;
 `
 
-const Title = styled.h1`
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-  text-align: center;
-  text-decoration: none;
-
-  a {
-    color: ${({ theme }) => theme.colors.secondary};
-    text-decoration: none;
-    &:hover,
-    :focus,
-    :active {
-      text-decoration: underline;
-    }
-  }
-`
-
-const Description = styled.p`
-  text-align: center;
-  line-height: 1.5;
-  font-size: 1.5rem;
-`
-const CodeTag = styled.code`
-  background: #fafafa;
-  border-radius: 5px;
-  margin: 0 0.75rem;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-`
-
 const Wrapper = styled.div`
   display: flex;
   align-items:center;
@@ -94,9 +61,94 @@ const SecondaryIcon = styled.div`
 
 const ModuleBorderWrap = styled.div`
     position: relative;
-    background:  ${(props) => (props.isMenuVisible ? "#8a8a8a" : "linear-gradient(to right, rgb(230, 0, 122) 0%, #3f4e9c 55% )")};
+    background: linear-gradient(to right, rgb(230, 0, 122) 0%, #3f4e9c 55% );
     padding: 1.6px 1.6px 1.6px 1.6px;
     border-radius: 14px;
 `
 
-export { Container, Main, Title, Description, CodeTag, Icon, ModuleBorderWrap, Wrapper, SecondaryIcon }
+
+const Button = styled.button`
+    position: relative;
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    padding-right:70px;
+    cursor:pointer;
+    color: white;
+    display: inline-block;
+    text-align: left;
+`
+
+const Subtext = styled.div`
+    color: gray;
+    padding-bottom: 5px;
+    font-size: small;
+`
+
+interface PropsLeftMargin {
+  left: string;
+}
+const CardWrapper = styled.div<PropsLeftMargin>`
+    position: absolute;
+    top: -380%;
+    left: ${prop => prop["left"]};
+    font-size: small;
+    background-color: white;
+    color: black;
+    border-radius: 14px;
+    padding:0px 10px 4px 14px;
+    height: 210px;
+    width: 40%;
+    p{
+        font-size: 14px;
+        font-weight: 500;
+    }
+`
+
+const AmountCardWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+`
+
+const AmountIcon = styled.span`
+    background: lightgray;
+    color: white;
+    padding: 4px 6px;
+    margin-left: 6px;
+    border-radius: 4px;
+    font-size: smaller;
+    cursor: pointer;
+`
+interface PropsIsClicked {
+  isClicked: boolean;
+}
+const CardChainLabel = styled.label<PropsIsClicked>`
+    border: ${props => props['isClicked'] ? '1px solid rgb(230,0,122)' : '1px solid gray'};
+    border-radius: 8px;
+    padding: 10px 6px;
+    position: relative;
+`
+
+const CardChainSelect = styled.span<PropsIsClicked>`
+    position: absolute;
+    right: 4px;
+    background: ${props => props['isClicked'] ? 'rgb(230,0,122)' : '#e7e7e7'};
+    color: ${props => props['isClicked'] ? 'white' : 'black'};;
+    padding: 6px 11px;
+    border-radius: 6px;
+    font-weight: 500;
+`
+
+const CardChainRadio = styled.span<PropsIsClicked>`
+    border: none;
+    outline: none;
+    background: ${props => props["isClicked"] ? 'rgb(230,0,122)' : 'lightgray'};
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+`
+
+export { Container, Main, Icon, ModuleBorderWrap, Wrapper, SecondaryIcon, Button, Subtext, CardWrapper, AmountCardWrapper, AmountIcon, CardChainLabel, CardChainRadio, CardChainSelect }

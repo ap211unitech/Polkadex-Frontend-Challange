@@ -1,4 +1,4 @@
-.card_input_radio {
+.card_input_radio, .card_input_radio_2 {
     display: none;
 }
 
@@ -32,3 +32,11 @@
 .card span:nth-child(3) {
     color: gray;
 }
+
+/* Card-Chain Styles */
+.card_chain {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
