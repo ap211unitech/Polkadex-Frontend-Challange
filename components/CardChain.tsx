@@ -20,7 +20,6 @@ const CardChain = ({ setCardToDisplay, items, setChain, chain }) => {
         else {
             setClick(1);
         }
-        setCardToDisplay(3);
     }
 
     return (

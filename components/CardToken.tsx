@@ -8,7 +8,6 @@ const CardToken = ({ setCardToDisplay, items, setToken }) => {
     const handleChange = (e) => {
         e.stopPropagation();
         setToken(prev => ({ ...prev, title: e.target.value }));
-        setCardToDisplay(2);
     }
     return (
         <Fragment>
