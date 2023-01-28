@@ -18,10 +18,10 @@ UI component made as given in [Figma](https://www.figma.com/proto/6toqGDBQmJuw8N
 Project is deployed at [https://polkadex-frontend-challange.vercel.app/](https://polkadex-frontend-challange.vercel.app/)
 
 ## Demo Images
-![Demo Image 1](./Demo Image 1.jpg)
-![Demo Image 2](./Demo Image 2.jpg)
-![Demo Image 3](./Demo Image 3.jpg)
-![Demo Image 4](./Demo Image 4.jpg)
+![Demo Image 1](./Demo_Image_1.jpg)
+![Demo Image 2](./Demo_Image_2.jpg)
+![Demo Image 3](./Demo_Image_3.jpg)
+![Demo Image 4](./Demo_Image_4.jpg)
 
 ## Developer
 [Arjun Porwal](https://github.com/ap211unitech/)
