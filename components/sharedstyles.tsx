@@ -73,16 +73,29 @@ const Icon = styled.div`
   border-radius:8px;
   cursor: pointer;
   box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
-  background-color: rgb(228 228 228 / 30%); 
+  background-color: rgb(228 228 228 / 16%); 
   backdrop-filter: blur(8px); /* Chrome and Opera */
   -webkit-backdrop-filter: blur(8px);  /* Safari 9+ */
 `
 
+const SecondaryIcon = styled.div`
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  color: white;
+  font-size:15px;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor: pointer;
+  box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
+  background-color: rgb(230, 0, 122); 
+`
+
 const ModuleBorderWrap = styled.div`
     position: relative;
-    background: linear-gradient(to right, #b12038 0%, #3f4e9c 55% );
+    background:  ${(props) => (props.isMenuVisible ? "#8a8a8a" : "linear-gradient(to right, rgb(230, 0, 122) 0%, #3f4e9c 55% )")};
     padding: 1.6px 1.6px 1.6px 1.6px;
     border-radius: 14px;
 `
 
-export { Container, Main, Title, Description, CodeTag, Icon, ModuleBorderWrap, Wrapper }
+export { Container, Main, Title, Description, CodeTag, Icon, ModuleBorderWrap, Wrapper, SecondaryIcon }
